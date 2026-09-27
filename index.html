@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3eadc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Книги">
+<title>Мои книги</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header>
+<div><div class="eyebrow">Личная библиотека</div><h1>Мои книги</h1></div>
+<button id="menuBtn" class="round">•••</button>
+</header>
+
+<nav class="tabs">
+<button class="tab active" data-tab="books">Книги</button>
+<button class="tab" data-tab="audio">Аудиокниги</button>
+</nav>
+
+<main>
+<section id="listView">
+<div id="empty" class="empty hidden">
+<div class="star">✦</div>
+<h2 id="emptyTitle">Книг пока нет</h2>
+<p>Добавь название, автора и конспект.</p>
+</div>
+<div id="cards" class="cards"></div>
+</section>
+
+<section id="detailView" class="hidden">
+<button id="backBtn" class="back">← Назад</button>
+<article class="detail">
+<div id="detailType" class="eyebrow"></div>
+<h2 id="detailTitle"></h2>
+<div id="detailAuthor" class="author"></div>
+<hr>
+<h3>Конспект</h3>
+<div id="detailNotes" class="notes"></div>
+<div class="actions">
+<button id="editBtn" class="secondary">Редактировать</button>
+<button id="deleteBtn" class="danger">Удалить</button>
+</div>
+</article>
+</section>
+</main>
+
+<button id="addBtn" class="fab">+</button>
+</div>
+
+<div id="editor" class="modal hidden">
+<form id="editorForm" class="sheet">
+<div class="sheetHead">
+<div><div id="editorType" class="eyebrow">Книга</div><h2 id="editorHeading">Добавить</h2></div>
+<button type="button" id="closeEditor" class="round">×</button>
+</div>
+<label>Название<input id="titleInput" required maxlength="160"></label>
+<label>Автор<input id="authorInput" required maxlength="160"></label>
+<label>Конспект<textarea id="notesInput" rows="15" required placeholder="Вставь сюда конспект книги..."></textarea></label>
+<button class="primary" type="submit">Сохранить</button>
+</form>
+</div>
+
+<div id="backup" class="modal hidden">
+<div class="sheet small">
+<div class="sheetHead">
+<div><div class="eyebrow">Данные</div><h2>Резервная копия</h2></div>
+<button id="closeBackup" class="round">×</button>
+</div>
+<button id="exportBtn" class="secondary wide">Скачать JSON</button>
+<label class="secondary wide fileLabel">Загрузить JSON<input id="importInput" type="file" accept=".json,application/json" hidden></label>
+<p class="hint">Импорт заменит текущие записи.</p>
+</div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>
